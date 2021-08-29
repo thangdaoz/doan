@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Stationery_managementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="active" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_charge_value" Type="float" Nullable="false" />
+    <Property Name="vat_charge_value" Type="float" Nullable="false" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="country" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="message" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bill_no" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="customer_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="customer_address" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="customer_phone" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="date_time" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="gross_amount" Type="float" Nullable="false" />
+    <Property Name="service_charge_rate" Type="float" Nullable="false" />
+    <Property Name="service_charge" Type="float" Nullable="false" />
+    <Property Name="vat_charge_rate" Type="float" Nullable="false" />
+    <Property Name="vat_charge" Type="float" Nullable="false" />
+    <Property Name="net_amount" Type="float" Nullable="false" />
+    <Property Name="discount" Type="float" Nullable="false" />
+    <Property Name="paid_status" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="company_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orders_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="qty" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="rate" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="amount" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sku" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="price" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="qty" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="text" Nullable="false" />
+    <Property Name="store_id" Type="int" Nullable="false" />
+    <Property Name="availability" Type="int" Nullable="false" />
+    <Property Name="category_id" Type="int" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stores">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="firstname" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="gender" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users_roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="users_id" Type="int" Nullable="false" />
+    <Property Name="roles_id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__orders__company___5224328E">
+    <End Role="company" Type="Self.company" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__user_id__02FC7413">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders_it__order__5CD6CB2B">
+    <End Role="orders" Type="Self.orders" Multiplicity="1" />
+    <End Role="orders_item" Type="Self.orders_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders_item">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders_it__produ__02084FDA">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="orders_item" Type="Self.orders_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders_item">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__products__catego__66603565">
+    <End Role="categories" Type="Self.categories" Multiplicity="1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__products__store___6754599E">
+    <End Role="stores" Type="Self.stores" Multiplicity="1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="store_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users_rol__roles__5BE2A6F2">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="users_roles" Type="Self.users_roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users_roles">
+        <PropertyRef Name="roles_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users_rol__users__01142BA1">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="users_roles" Type="Self.users_roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users_roles">
+        <PropertyRef Name="users_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Stationery_managementModelStoreContainer">
+    <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders_item" EntityType="Self.orders_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stores" EntityType="Self.stores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users_roles" EntityType="Self.users_roles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__orders__company___5224328E" Association="Self.FK__orders__company___5224328E">
+      <End Role="company" EntitySet="company" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__user_id__02FC7413" Association="Self.FK__orders__user_id__02FC7413">
+      <End Role="users" EntitySet="users" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders_it__order__5CD6CB2B" Association="Self.FK__orders_it__order__5CD6CB2B">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="orders_item" EntitySet="orders_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders_it__produ__02084FDA" Association="Self.FK__orders_it__produ__02084FDA">
+      <End Role="products" EntitySet="products" />
+      <End Role="orders_item" EntitySet="orders_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__products__catego__66603565" Association="Self.FK__products__catego__66603565">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__products__store___6754599E" Association="Self.FK__products__store___6754599E">
+      <End Role="stores" EntitySet="stores" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users_rol__roles__5BE2A6F2" Association="Self.FK__users_rol__roles__5BE2A6F2">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users_roles" EntitySet="users_roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users_rol__users__01142BA1" Association="Self.FK__users_rol__users__01142BA1">
+      <End Role="users" EntitySet="users" />
+      <End Role="users_roles" EntitySet="users_roles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
